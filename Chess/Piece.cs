@@ -12,10 +12,10 @@ namespace Chess
     internal class Piece
     {
         public int piece, x, y;
-        public bool hasMoved, colour, inCheck;
+        public bool hasMoved, colour, inCheck, captured;
         public Image image;
 
-        public Piece(int _piece, int _x, int _y, bool _colour, bool _hasMoved, Image _image)
+        public Piece(int _piece, int _x, int _y, bool _colour, bool _hasMoved, Image _image, bool _captured)
         {
             piece = _piece;
             x = _x;
@@ -23,6 +23,7 @@ namespace Chess
             colour = _colour;
             hasMoved = _hasMoved;
             image = _image;
+            captured = _captured;
         }
 
         public bool MoveCheck(List<Piece> pieceList, Rectangle R)
@@ -213,27 +214,8 @@ namespace Chess
 
             else if (piece == 2) //bishop (done)
             {
-                int tempX;
-                int tempY;
-
-                //if (checkCheck)
-                //{
-                //    if (!colour)
-                //    {
-                //        tempX = pieceList[28].x - R.X;
-                //        tempY = pieceList[28].y - R.Y;
-                //    }
-                //    else
-                //    {
-                //        tempX = pieceList[12].x - R.X;
-                //        tempY = pieceList[12].y - R.Y;
-                //    }
-                //}
-                //else
-                //{
-                    tempX = R.X - x;
-                    tempY = R.Y - y;
-                //}
+                int tempX = R.X - x;
+                int tempY = R.Y - y;
 
                 if (Math.Abs(tempX) == Math.Abs(tempY))
                 {
@@ -323,27 +305,8 @@ namespace Chess
                     goto BREAK;
                 }
 
-                int tempX;
-                int tempY;
-
-                //if (checkCheck)
-                //{
-                //    if (!colour)
-                //    {
-                //        tempX = pieceList[28].x - R.X;
-                //        tempY = pieceList[28].y - R.Y;
-                //    }
-                //    else
-                //    {
-                //        tempX = pieceList[12].x - R.X;
-                //        tempY = pieceList[12].y - R.Y;
-                //    }
-                //}
-                //else
-                //{
-                    tempX = R.X - x;
-                    tempY = R.Y - y;
-                //}
+                int tempX = R.X - x;
+                int tempY = R.Y - y;
 
                 if (tempX > 0 && tempY > 0) //downRightMove
                 {
