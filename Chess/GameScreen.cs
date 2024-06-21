@@ -103,12 +103,14 @@ namespace Chess
                                             {
                                                 pieceList[i].y = 0 + (capturedPieces1 * 50);
                                                 pieceList[i].x = multiplier1 * 50;
+                                                pieceList[i].captured = true;
                                                 capturedPieces1++;
                                             }
                                             else
                                             {
                                                 pieceList[i].y = 0 + (capturedPieces2 * 50);
                                                 pieceList[i].x = this.Width - 50 - (multiplier2 * 50);
+                                                pieceList[i].captured = true;
                                                 capturedPieces2++;
                                             }
 
@@ -157,7 +159,7 @@ namespace Chess
                                 {
                                     for (int j = 0; j < pieceList.Count; j++)
                                     {
-                                        if (j != 12 && pieceList[j].colour)
+                                        if (j != 12 && pieceList[j].colour && !pieceList[j].captured)
                                         {
                                             if (pieceList[selected].piece == 5)
                                             {
@@ -210,7 +212,7 @@ namespace Chess
                                 {
                                     for (int j = 0; j < pieceList.Count; j++)
                                     {
-                                        if (j != 28 && !pieceList[j].colour)
+                                        if (j != 28 && !pieceList[j].colour && !pieceList[j].captured)
                                         {
                                             if (pieceList[selected].piece == 5)
                                             {
@@ -267,7 +269,7 @@ namespace Chess
                                 {
                                     for (int j = 0; j < pieceList.Count; j++)
                                     {
-                                        if (j != selected && pieceList[j].colour != pieceList[selected].colour)
+                                        if (j != selected && pieceList[j].colour != pieceList[selected].colour && !pieceList[j].captured)
                                         {
                                             if (pieceList[j].MoveCheck(pieceList, r))
                                             {
@@ -498,7 +500,7 @@ namespace Chess
                     }
                 }
 
-                tempPiece = new Piece(piece, x, y, colour, false, image);
+                tempPiece = new Piece(piece, x, y, colour, false, image, false);
                 pieceList.Add(tempPiece);
             }
         }
